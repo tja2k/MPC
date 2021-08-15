@@ -1,5 +1,33 @@
 {
-  "state" : {},
-  "cfg" : {},
-  "messages" : {}
+    "state": {
+        "photochallenge_active": false,
+        "photochallenge_start_time": "Today",
+        "photochallenge_channel_id": 0,
+        "photochallenge_last_winners": []
+    },
+    "cfg": {
+        "command_prefix": "!",
+        "bot_allowed_users": [
+            867115647561629696
+        ],
+        "photochallenge_entry_cooldown": 0,
+        "bot_controll_allowed": [
+            867115647561629696
+        ],
+        "embed_color": [
+            40,
+            70,
+            220
+        ]
+    },
+    "messages": {
+        "photochallenge_announcement": "Hallo <@!873479579950542849>",
+        "photochallenge_fist_place": "",
+        "photochallenge_second_place": "",
+        "photochallenge_third_place": ""
+    },
+    "errors": {
+        "commands_no_permission": "You are not allowed to invoke commands.",
+        "commands_does_not_exist": "This command does not exist."
+    }
 }

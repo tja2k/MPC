@@ -7,9 +7,6 @@
     },
     "cfg": {
         "command_prefix": "!",
-        "bot_allowed_users": [
-            867115647561629696
-        ],
         "photochallenge_entry_cooldown": 0,
         "bot_controll_allowed": [
             867115647561629696
@@ -21,13 +18,26 @@
         ]
     },
     "messages": {
-        "photochallenge_announcement": "Hallo <@!873479579950542849>",
-        "photochallenge_fist_place": "",
-        "photochallenge_second_place": "",
-        "photochallenge_third_place": ""
+        "photochallenge_announcement_title": "Yeah",
+        "photochallenge_announcement_msg": "Hey y'all!\nDue to <@!770239659182915594> winning our last photochallenge our new theme is Mighty.\n\nHf and take some cool photos",
+        "photochallenge_fist_place_title_single": "New Winner",
+        "photochallenge_fist_place_msg_single": "",
+        "photochallenge_fist_place_title_multi": "Hallo Welt und herzlichen Gl\u00fcckwunsch an {winners}. Ihr d\u00fcrft euch das n\u00e4chste Thema aussuchen",
+        "photochallenge_fist_place_msg_multi": "",
+        "photochallenge_second_place_title_single": "",
+        "photochallenge_second_place_msg_single": "",
+        "photochallenge_second_place_title_multi": "",
+        "photochallenge_second_place_msg_multi": "",
+        "photochallenge_third_place_msg_single": "",
+        "photochallenge_third_place_title_single": "",
+        "photochallenge_third_place_msg_multi": "",
+        "photochallenge_third_place_title_multi": ""
     },
     "errors": {
-        "commands_no_permission": "You are not allowed to invoke commands.",
-        "commands_does_not_exist": "This command does not exist."
+        "commands_no_permission": "You are not allowed to invoke commands",
+        "commands_does_not_exist": "This command does not exist",
+        "messenger_preview_does_not_exist": "There is no preview with this name",
+        "messenger_no_preview_selected": "There was no preview selected",
+        "messenger_no_winners_given": "There are no winners to be announced"
     }
 }

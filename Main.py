@@ -10,7 +10,7 @@ import Messenger
 
 client = discord.Client()
 config = Config.Config("configuration.json")
-messenger = Messenger.Messenger(config)
+messenger = Messenger.Messenger(config, client)
 messageParser = MessageParser.MessageParser(config, messenger)
 
 @client.event
@@ -18,6 +18,7 @@ async def on_ready():
 
     config.load()
     messageParser.addCommand("set", config.c__set)
+    messageParser.addCommand("preview", messenger.c__preview)
     print("Bot ready")
 
 

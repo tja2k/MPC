@@ -15,9 +15,10 @@ class MessageParser:
                 return
 
             try:
-                self.commands[self.__getCommand(message)](message)
+                await self.commands[self.__getCommand(message)](message)
             except KeyError:
                 await self.messenger.simpleMessage(message.author, self.config.get("errors.commands_does_not_exist"))
+
                 
             return
 
@@ -32,7 +33,7 @@ class MessageParser:
         return message.content.startswith(self.config.get("cfg.command_prefix"))
 
     def __hasPermission(self, message) -> bool:
-        return message.author.id in self.config.get("cfg.bot_allowed_users")
+        return message.author.id in self.config.get("cfg.bot_controll_allowed")
 
     def addCommand(self, commandName, func):
         self.commands[commandName] = func

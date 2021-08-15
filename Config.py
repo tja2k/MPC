@@ -49,6 +49,8 @@ class Config:
             self.load()
 
 
+
+
         except PermissionError as e:
             print(e)
         except IndexError as e:
@@ -58,6 +60,9 @@ class Config:
         except ValueError as e:
             print(e)
         except FileNotFoundError as e:
+            print(e)
+
+        except TypeError as e:
             print(e)
 
 
@@ -75,7 +80,7 @@ class Config:
 
         return None
 
-    def c__set(self, message):
+    async def c__set(self, message):
         try:
             args = message.content.split(" ")
 
@@ -87,6 +92,8 @@ class Config:
 
             value = message.content[prefix_length:]
             val = type(self.configuration[category][variable])(value)
+
+            
             self.update(var, val)
 
         except IndexError as e:

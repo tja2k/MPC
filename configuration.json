@@ -1,8 +1,8 @@
 {
     "state": {
-        "photochallenge_active": true,
-        "photochallenge_start_time": "2021-08-15 16:45:15",
-        "photochallenge_channel_id": 874365973333950484,
+        "photochallenge_active": false,
+        "photochallenge_start_time": "",
+        "photochallenge_channel_id": 874323674642124852,
         "photochallenge_last_winners": []
     },
     "cfg": {
@@ -45,6 +45,7 @@
         "messenger_no_winners_given": "There are no winners to be announced",
         "photochallenge_entry_not_valid": "This is not a valid entry. Try jpg or png",
         "photochallenge_active_cooldown": "You have an active cooldown.\nTime remaining:",
-        "photochallenge_challenge_already_started": "A photochallenge has already started"
+        "photochallenge_challenge_already_started": "A photochallenge has already started",
+        "photochallenge_no_active_challenge": "The is currently no photochallenge active"
     }
 }

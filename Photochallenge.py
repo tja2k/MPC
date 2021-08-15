@@ -50,12 +50,16 @@ class Photochallenge:
         self.config.update("state.photochallenge_active", True, False)
         self.config.update("state.photochallenge_start_time", datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"), False)
         #self.config.update("state.photochallenge_channel_id", message.channel.id,False)
-
-        await self.messenger.photochallenge_announcement(self.config.get("state.photochallenge_channel_id"))
+        channel_id = self.config.get("state.photochallenge_channel_id")
+        channel = self.client.get_channel(channel_id)
+        await self.messenger.photochallenge_announcement(channel)
         
 
     # Ends a photochallenge
     async def c__end(self, message):
+        if not self.config.get("state.photochallenge_active"):
+            await self.messenger.simpleMessage(message.author, self.config.get("errors.photochallenge_no_active_challenge"))
+            return
         # get winners
         # announce winners through messenger
         # reset state
@@ -94,8 +98,6 @@ class Photochallenge:
         try:
             allowedAgain = self.activeCooldowns[message.author.id] + datetime.timedelta(
                 seconds=self.config.get("cfg.photochallenge_entry_cooldown"))
-
-            
                 
             return allowedAgain.replace(microsecond=0) - datetime.datetime.utcnow().replace(microsecond=0)
         except KeyError:

@@ -25,6 +25,7 @@ async def on_ready():
     messageParser.addCommand("preview", messenger.c__preview)
     messageParser.addCommand("start", photochallenge.c__start)
     messageParser.addCommand("end", photochallenge.c__end)
+    messageParser.addCommand("here", photochallenge.c__set_photochallenge_channel)
     print("Bot ready")
 
 

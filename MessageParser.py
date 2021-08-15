@@ -2,13 +2,15 @@ import discord
 
 
 class MessageParser:
-    def __init__(self, config, messenger) -> None:
+    def __init__(self, config, messenger, photochallenge) -> None:
         self.config = config
-        self.commands = dict()
         self.messenger = messenger
+        self.photochallenge = photochallenge
+        self.commands = dict()
 
     async def __call__(self, message):
 
+        # Check if command and handle command
         if self.__isCommand(message):
             if not self.__hasPermission(message):
                 await self.messenger.simpleMessage(message.author, self.config.get("errors.commands_no_permission"))
@@ -19,13 +21,15 @@ class MessageParser:
             except KeyError:
                 await self.messenger.simpleMessage(message.author, self.config.get("errors.commands_does_not_exist"))
 
-                
             return
+
+        # No command, give to photochallenge to do further checks
+        await self.photochallenge(message)
 
 
     def __getCommand(self, message) -> str:
         try:
-            return message.content.split(" ")[0][len(self.config.get("cfg.command_prefix")):]
+            return message.content.split(" ")[0][len(self.config.get("cfg.command_prefix")):].lower()
         except IndexError as e:
             print(e)
 

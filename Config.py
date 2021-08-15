@@ -80,6 +80,17 @@ class Config:
 
         return None
 
+    def getJSONString(self):
+        try:
+            with open(self.file, "r") as configurationFile:
+                configuration = json.load(configurationFile)
+            configurationFile.close()
+
+        except FileNotFoundError as e:
+            print(e)
+        
+        return json.dumps(configuration, indent=2)
+
     async def c__set(self, message):
         try:
             args = message.content.split(" ")
@@ -100,4 +111,5 @@ class Config:
             return
         except TypeError as e:
             return
+
 

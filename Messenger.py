@@ -35,6 +35,18 @@ class Messenger:
         except HTTPException as e:
             print(e)
 
+    async def deleteMessage(self, message, delay=0):
+        await message.delete(delay=delay)
+
+    async def c__showcfg(self, message):
+        try:
+            msg = self.config.getJSONString()
+            await self.simpleMessage(message.author, msg)
+        except Forbidden as e:
+            print(e)
+        except HTTPException as e:
+            print(e)
+
     async def c__preview(self, message):
         target = message.author
 
@@ -43,9 +55,12 @@ class Messenger:
             previewMessage = args[1].lower()
 
             if previewMessage == "announcement": await self.photochallenge_announcement(target)
-            elif previewMessage == "place1": await self.photochallenge_first_place(target, [867115647561629696, 867115647561629696])
-            elif previewMessage == "place2": pass
-            elif previewMessage == "place3": pass
+            elif previewMessage == "place1s": await self.photochallenge_first_place(target, [867115647561629696])
+            elif previewMessage == "place1m": await self.photochallenge_first_place(target, [867115647561629696, 770239659182915594])
+            elif previewMessage == "place2s": pass
+            elif previewMessage == "place2m": pass
+            elif previewMessage == "place3s": pass
+            elif previewMessage == "place3m": pass
             else: await self.simpleMessage(target, self.config.get("errors.messenger_preview_does_not_exist"))
 
         except IndexError:
@@ -63,26 +78,47 @@ class Messenger:
 
         await target.send(embed=embed)
 
-    async def photochallenge_first_place(self, target, winners):
-        if len(winners) == 0:
+    # TODO Change winner_ids to entries and get winner_ids from entries respectively
+    async def photochallenge_first_place(self, target, winner_ids):
+        # No winners -> Something went wrong
+        if len(winner_ids) == 0:
             await self.simpleMessage(target, self.config.get("errors.messenger_no_winners_given"))
             return
 
-    
+        # Get winners in following format <@id> <- Discord will convert this into a "ping"
+        winners_ping = ""
+        for member_id in winner_ids:
+            winners_ping += f"<@{member_id}> "
 
-        if len(winners) == 1:
-            print(f"And the winner is <@{winners[0]}>" )
+        embed = discord.Embed()
 
-        elif len(winners) > 1:
-            msg = self.config.get("messages.photochallenge_fist_place_title_multi")
+        # Choose the right messages depending on how many winners there are
+        # Add the image if there is only one winner directly
+        if len(winner_ids) > 1:
+            title = self.config.get("messages.photochallenge_first_place_title_multi")
+            msg = self.config.get("messages.photochallenge_first_place_msg_multi")
 
-            members = ""
-            for member_id in winners:
-                members += f"<@{member_id}> "
+            #Get image
+        else:
+            title = self.config.get("messages.photochallenge_first_place_title_single")
+            msg = self.config.get("messages.photochallenge_first_place_msg_single")
 
-            msg = msg.replace("{winners}", members)
-            
-            await self.simpleMessage(target, msg)
+        # Insert winners in final message
+
+        msg = msg.replace("{winners}", winners_ping)
+
+        
+        embed.title = title
+        embed.description = msg
+        color = self.config.get("cfg.embed_color")
+        embed.color = discord.Color.from_rgb(color[0],color[1],color[2])
+        await target.send(embed=embed)
+
+    async def __sendRemainingPosts(self, target, messages):
+        pass
+        #For message in messages:
+        # make embed with attachment linked
+        # Write "By <@user_id> in the footer"
 
 
     

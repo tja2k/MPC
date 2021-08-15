@@ -1,8 +1,8 @@
 {
     "state": {
-        "photochallenge_active": false,
-        "photochallenge_start_time": "Today",
-        "photochallenge_channel_id": 0,
+        "photochallenge_active": true,
+        "photochallenge_start_time": "2021-08-15 15:48:21",
+        "photochallenge_channel_id": 874365973333950484,
         "photochallenge_last_winners": []
     },
     "cfg": {
@@ -20,10 +20,10 @@
     "messages": {
         "photochallenge_announcement_title": "Yeah",
         "photochallenge_announcement_msg": "Hey y'all!\nDue to <@!770239659182915594> winning our last photochallenge our new theme is Mighty.\n\nHf and take some cool photos",
-        "photochallenge_fist_place_title_single": "New Winner",
-        "photochallenge_fist_place_msg_single": "",
-        "photochallenge_fist_place_title_multi": "Hallo Welt und herzlichen Gl\u00fcckwunsch an {winners}. Ihr d\u00fcrft euch das n\u00e4chste Thema aussuchen",
-        "photochallenge_fist_place_msg_multi": "",
+        "photochallenge_first_place_title_single": "New Winner",
+        "photochallenge_first_place_msg_single": "GZ to {winners}",
+        "photochallenge_first_place_title_multi": "New Winners",
+        "photochallenge_first_place_msg_multi": "GZ to yall {winners}",
         "photochallenge_second_place_title_single": "",
         "photochallenge_second_place_msg_single": "",
         "photochallenge_second_place_title_multi": "",
@@ -38,6 +38,7 @@
         "commands_does_not_exist": "This command does not exist",
         "messenger_preview_does_not_exist": "There is no preview with this name",
         "messenger_no_preview_selected": "There was no preview selected",
-        "messenger_no_winners_given": "There are no winners to be announced"
+        "messenger_no_winners_given": "There are no winners to be announced",
+        "photochallenge_entry_not_valid": "This is not a valid entry. Try jpg or png"
     }
 }
